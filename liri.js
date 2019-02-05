@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 var keys = require("./keys");
-let request = require("request");
+var request = require("request");
 var fs = require("fs");
 var axios = require("axios");
 var Spotify = require('node-spotify-api');
@@ -125,18 +125,18 @@ function spotifySong(){
 
   
 
-  var song = "";
+  var song = userInput;
 
-  for (var i = 3; i < input.length; i++) {
+  // for (var i = 3; i < input.length; i++) {
 
-    if (i > 3 && i < input.length) {
-      song = song + "+" + input[i];
-    }
-    else {
-      song += input[i];
+  //   if (i > 3 && i < input.length) {
+  //     song = song + "+" + input[i];
+  //   }
+  //   else {
+  //     song += input[i];
   
-    }
-  }
+  //   }
+  // }
 
   spotify.search({ type: 'track', query: song })
   .then(function(response) {
@@ -171,8 +171,14 @@ var doWhatItSays = function(){
 
       // call appropriate function and pass arguement
       
+      
       userAction = dataArr[0];
-      userInput = dataArr[1];
+      
+
+      if(userAction === "spotify-this-song"){
+          userInput = dataArr[1];
+
+      }
       console.log(userAction +", " + userInput);
         runAction(userAction,userInput);
   });

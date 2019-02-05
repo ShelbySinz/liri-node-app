@@ -5,10 +5,10 @@
  ##*Can take in a command and return data.* 
 
 ### types of commands:
-* "movie-this"
-* "spotify-this-song"
-* "concert-this"
-* "do-what-it-says"
+* "movie-this" - uses the axios package, OMBD API
+* "spotify-this-song" - uses spotify package
+* "concert-this" - uses request package, Bands In Town API
+* "do-what-it-says" - uses fs ReadFile and spotify 
 
 
 ### *node packages:*
