@@ -42,18 +42,17 @@ function bandInTown (){
 
 
   request("https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=codingbootcamp", function (error, response, body) {
-    // IF THERE IS NO ERROR GIVE US A 200 STATUS CODE (EVERYTHING OK!)
-    if (!error && response.statusCode === 200) {
-        // CAPTURE DATA AND USE JSON TO FORMAT
-        let userBand = JSON.parse(body);
-        // PARSE DATA AND USE FOR LOOP TO ACCESS PATHS TO DATA
+    
+    if (!error ) {
+        
+        var userBand = JSON.parse(body);
+       
         if (userBand.length > 0) {
             for (i = 0; i < 1; i++) {
 
-                // CONSOLE DESIRED DATA USING E6 SYNTAX
+               
                 console.log(`\n\nArtist: ${userBand[i].lineup[0]} \nVenue: ${userBand[i].venue.name}\nVenue City: ${userBand[i].venue.city}, ${userBand[i].venue.country}`)
 
-                // MOMENT.JS TO FORMAT THE DATE MM/DD/YYYY
                 let concertDate = moment(userBand[i].datetime).format("MM/DD/YYYY hh:00 A");
                 console.log(`Date and Time: ${concertDate}\n\n- - - - -`);
             };
@@ -93,7 +92,7 @@ var movieName = process.argv.slice(3).join("+");
 
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
-    // This line is just to help us debug against the actual URL.
+    
     
     
     axios.get(queryUrl).then(
